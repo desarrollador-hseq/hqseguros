@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model InsuranceProduct {
+  id               String           @id @default(uuid())
+  category         String // e.g., "Auto", "Health", "Property"
+  title            String // e.g., "Comprehensive Car Coverage"
+  shortDescription String // 1-line summary for cards/UI
+  longDescription  String? @db.Text // Detailed HTML/markdown
+  slug             String           @unique // e.g., "comprehensive-car"
+  icon             String? // "MdDirectionsCar" (from react-icons)
+  imageUrl         String? // URL to the product image
+  features         ProductFeature[]
+  isFeatured       Boolean          @default(false)
+  isActive         Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+}
+
+model ProductFeature {
+  id          String           @id @default(uuid())
+  title       String
+  description String          @db.Text
+  imageUrl    String?
+  productId   String
+  product     InsuranceProduct @relation(fields: [productId], references: [id])
+  createdAt   DateTime         @default(now())
+
+  @@index([productId])
+}
+
+model ContactForm {
+  id            String   @id @default(uuid())
+  fullName      String
+  email         String
+  mobilePhone   String
+  company       String?
+  city          String
+  contactReason String   // "quote", "pqrs", "other"
+  message       String   @db.Text
+  productId     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
