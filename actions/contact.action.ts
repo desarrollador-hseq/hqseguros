@@ -1,6 +1,11 @@
-"use server";
 
+
+"use server";
+import { IInsuranceProduct } from "@/interfaces/insurance-product.interface";
 import { db } from "@/lib/db";
+import { ContactForm } from "@prisma/client";
+
+
 import { revalidatePath } from "next/cache";
 
 export type ContactFormData = {
@@ -31,7 +36,7 @@ export async function submitContactForm(data: ContactFormData) {
       },
     });
 
-    // Revalidar la ruta para actualizar la caché
+    // Revalidar la ruta para actualizar la cachÃ©
     revalidatePath("/contacto");
 
     return { success: true, data: contact };
@@ -40,3 +45,13 @@ export async function submitContactForm(data: ContactFormData) {
     return { success: false, error: "Error al enviar el formulario" };
   }
 } 
+
+export async function getContactForms(): Promise<ContactForm[]> {
+  const contactForms = await db.contactForm.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return contactForms as unknown as ContactForm[];
+}

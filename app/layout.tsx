@@ -1,40 +1,30 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+"use client";
+
+import { useEffect } from "react";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { useThemeStore } from "./store/useThemeStore";
 import { Toaster } from "sonner";
 
-
-
-const roboto = Roboto({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  style: "normal",
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "HSEQ Seguros",
-  description: "HSEQ Seguros, Tu tranquilidad, nuestra mayor responsabilidad",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const theme = useThemeStore((state) => state.theme);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+  }, [theme]);
+
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${roboto.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster position="top-center" />
-        </ThemeProvider>
+    <html lang="es" className={theme}>
+      <body className={inter.className}>
+        {children}
+        <Toaster position="top-center" />
       </body>
     </html>
   );

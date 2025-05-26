@@ -3,7 +3,7 @@ import React from "react";
 
 export const Benefits = () => {
   return (
-    <section className="rounded-xl p-8 w-full max-w-4xl mx-auto my-20">
+    <section className="rounded-xl p-8 w-full max-w-4xl mx-auto my-20 dark:bg-[#161b27] border border-slate-300/20">
       <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight text-center">
         Beneficios exclusivos para <br /> nuestros clientes
       </h2>

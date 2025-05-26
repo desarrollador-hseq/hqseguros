@@ -17,7 +17,7 @@ const Home = async () => {
       <Header />
       <Hero />
       <Separator />
-      <div >
+      <div className="px-2" id="services-section">
         <Service1 />
         <Separator />
         <Service2 />
@@ -30,9 +30,9 @@ const Home = async () => {
         <Separator />
         <Service6 />
         <Separator />
+
         <Benefits />
       </div>
-        <Separator />
 
       <ContactForm />
       <Footer />

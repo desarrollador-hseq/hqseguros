@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import image from "@/public/images/people.png";
 import { Check } from "lucide-react";
@@ -6,15 +9,27 @@ import { Check } from "lucide-react";
 export function Service2() {
   return (
     <section className="container mx-auto dark:bg-background flex flex-col items-center justify-center py-10 my-8">
-      <div className="flex flex-col md:flex-row w-full min-h-[600px] overflow-hidden dark:bg-background">
+      <div className="flex flex-col items-center justify-center md:flex-row w-full min-h-[600px] overflow-hidden dark:bg-background">
         {/* Texto */}
-        <div className="md:w-1/2 w-full flex flex-col justify-center items-center p-8">
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:w-1/2 w-full flex flex-col justify-center items-center p-8"
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
             Protegiendo lo que más importa:
             <br /> Seguros de vida y salud
           </h2>
           <div className="space-y-6 flex flex-col md:flex-row gap-4 my-4">
-            <div className="flex items-start gap-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-start gap-4"
+            >
               <Check className="w-8 h-8 text-green-500" />
               <div>
                 <div className="font-semibold text-2xl dark:text-white">
@@ -25,8 +40,14 @@ export function Service2() {
                   fallecimiento.
                 </div>
               </div>
-            </div>
-            <div className="flex items-start gap-4">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-start gap-4"
+            >
               <Check className="w-8 h-8 text-green-500" />
               <div>
                 <div className="font-semibold  text-2xl dark:text-white">
@@ -37,19 +58,30 @@ export function Service2() {
                   médicos.
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-          <div className="flex items-start gap-4">
-            <div>
-              <div className="text-lg dark:text-slate-400">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+           
+              <div className="text-lg dark:text-slate-400 max-w-xl">
                 Acompañamos para proteger las personas que hacen parte de un
                 entorno laboral, como de un entorno familiar y social.
               </div>
-            </div>
-          </div>
-        </div>
+           
+          </motion.div>
+        </motion.div>
         {/* Imagen */}
-        <div className="md:w-1/2 w-full md:h-auto flex items-center justify-center">
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:w-1/2 w-full md:h-auto flex items-center justify-center"
+        >
           <div className="w-[340px] h-[600px] relative flex items-center justify-center rounded-sm overflow-hidden">
             <Image
               src={image}
@@ -59,7 +91,7 @@ export function Service2() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

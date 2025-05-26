@@ -6,11 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { submitContactForm } from "@/app/actions/contact.action";
-// import { getInsuranceProducts } from "@/app/actions/services.action";
+import { submitContactForm } from "@/actions/contact.action";
 
-// Importar componentes de shadcn
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -28,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ButtonLoading } from "@/components/button-loading";
 
 // Definir el esquema de validación con Zod
 const formSchema = z.object({
@@ -138,7 +136,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="py-16 bg-slate-50 dark:bg-background">
+    <section id="contact-section" className="py-16 bg-slate-50 dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
@@ -151,7 +149,7 @@ export const ContactForm = () => {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-[#1a2233] rounded-xl shadow-lg p-6 md:p-8 border border-slate-100 dark:border-slate-800">
+          <div className="bg-white dark:bg-[#161b27] rounded-md shadow-lg p-6 md:p-8 border border-slate-100 dark:border-secondary/20">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -332,14 +330,15 @@ export const ContactForm = () => {
                 />
 
                 {/* Botón de envío */}
-                <Button
+                <ButtonLoading
                   type="submit"
                   className="w-full bg-secondary hover:bg-secondary-dark text-white "
-                  disabled={isLoading}
+                  // disabled={isLoading}
                   variant="default"
+                  loading={isLoading}
                 >
                   {isLoading ? "Enviando..." : "Enviar mensaje"}
-                </Button>
+                </ButtonLoading>
               </form>
             </Form>
           </div>

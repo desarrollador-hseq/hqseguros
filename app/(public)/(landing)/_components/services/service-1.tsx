@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import image from "@/public/images/conversation.png";
 
@@ -7,7 +10,13 @@ export function Service1() {
     <section className="container mx-auto dark:bg-background flex flex-col items-center justify-center py-10  my-8">
       <div className="flex flex-col md:flex-row w-full min-h-[600px]  rounded-md  overflow-hidden  dark:bg-background">
         {/* Imagen */}
-        <div className="md:w-1/2 w-full md:h-auto flex items-center justify-center">
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:w-1/2 w-full md:h-auto flex items-center justify-center"
+        >
           <div className="w-[340px] h-[600px] relative flex items-center justify-center rounded-sm overflow-hidden">
             <Image
               src={image}
@@ -17,16 +26,28 @@ export function Service1() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
         {/* Texto */}
-        <div className="md:w-1/2 w-full flex flex-col justify-center p-8">
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:w-1/2 w-full flex flex-col justify-center p-8"
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
             Entendiendo las
             <br /> necesidades de nuestros clientes
           </h2>
           <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <span className="bg-secondary text-white font-bold rounded-full w-8 h-8 flex items-center justify-center text-lg">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-start gap-4"
+            >
+              <span className="bg-secondary text-white font-bold rounded-full min-w-[2rem] min-h-[2rem] w-8 h-8 flex items-center justify-center text-lg shrink-0">
                 1
               </span>
               <div>
@@ -38,9 +59,15 @@ export function Service1() {
                   medida.
                 </div>
               </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="bg-secondary text-white font-bold rounded-full w-8 h-8 flex items-center justify-center text-lg">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-start gap-4"
+            >
+              <span className="bg-secondary text-white font-bold rounded-full min-w-[2rem] min-h-[2rem] w-8 h-8 flex items-center justify-center text-lg shrink-0">
                 2
               </span>
               <div>
@@ -52,9 +79,15 @@ export function Service1() {
                   tomar las mejores decisiones.
                 </div>
               </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="bg-secondary text-white  font-bold rounded-full w-8 h-8 flex items-center justify-center text-lg">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex items-start gap-4"
+            >
+              <span className="bg-secondary text-white font-bold rounded-full min-w-[2rem] min-h-[2rem] w-8 h-8 flex items-center justify-center text-lg shrink-0">
                 3
               </span>
               <div>
@@ -65,9 +98,9 @@ export function Service1() {
                   Te brindamos un trato cercano y te acompañamos en cada paso.
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
