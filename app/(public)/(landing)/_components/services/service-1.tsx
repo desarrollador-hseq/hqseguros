@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import image from "@/public/images/conversation.png";
+import image from "@/public/images/conversation.webp";
 
 export function Service1() {
   return (

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import image from "@/public/images/employees.png";
+import image from "@/public/images/employees.webp";
 import { Check } from "lucide-react";
 
 export function Service5() {

@@ -68,7 +68,7 @@ export function Hero() {
             className="relative h-[400px] lg:h-[700px] w-full md:max-w-[400px] overflow-hidden"
           >
             <Image
-              src="/images/people.png"
+              src="/images/people.webp"
               alt="Equipo de profesionales"
               fill
               objectFit="cover"
